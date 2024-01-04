@@ -15,13 +15,13 @@ app.get('/', async (req, res) => {
       try {
         const region = await connection.getRegion();
         const auth = await connection.getCredentials();
+        const devices = await connection.getDevices();
       } catch (error) {
         console.log(error);
+        res.send(error)
       }
 
-    
-    const devices = await connection.getDevices();
-    res.send(devices)
+    res.send("OK")
 })
 
 app.listen(port, async () => {
